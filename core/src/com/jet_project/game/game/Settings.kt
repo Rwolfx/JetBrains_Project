@@ -7,5 +7,7 @@ abstract class Settings {
     companion object{
         val GRAVITY = 0f
         val DEFAULT_DENSITY = 1f
+        val velocityIterations = 6
+        val positionIterations = 2
     }
 }

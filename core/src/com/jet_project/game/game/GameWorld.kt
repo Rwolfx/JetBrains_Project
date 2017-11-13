@@ -17,7 +17,7 @@ class GameWorld(lvl : GameLevel) {
     private lateinit var world : World
     private var creatures = ArrayList<Creature>()
     private var gameObjects = ArrayList<GameObject>()
-    private val level = lvl;
+    private val level = lvl
 
 
     internal fun init(){
@@ -53,6 +53,10 @@ class GameWorld(lvl : GameLevel) {
     internal fun update(){
         if(creatures.isNotEmpty()) creatures.forEach {  creature -> creature.update() }
         if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.update() }
+    }
+
+    internal fun step(timeStep : Float){
+        world.step(timeStep,Settings.velocityIterations,Settings.positionIterations)
     }
 
     fun getWorld() : World =  world

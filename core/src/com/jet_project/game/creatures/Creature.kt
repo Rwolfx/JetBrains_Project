@@ -18,9 +18,9 @@ open abstract class Creature(name : String, currentWorld : GameWorld, x : Float,
     private lateinit var fixture : Fixture
     protected lateinit var img : Texture
     protected lateinit var sprite : Sprite
-    private var positionX = x;
-    private var positionY = y;
-    private var world = currentWorld;
+    private var positionX = x
+    private var positionY = y
+    private var world = currentWorld
 
     open fun init() {
         bodyDef = BodyDef()
@@ -41,7 +41,8 @@ open abstract class Creature(name : String, currentWorld : GameWorld, x : Float,
     }
 
     fun update(){
-
+        positionX = body.position.x
+        positionY = body.position.y
     }
 
 }
