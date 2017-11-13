@@ -7,7 +7,7 @@ import com.badlogic.gdx.physics.box2d.World
 import com.jet_project.game.creatures.Creature
 import com.jet_project.game.creatures.Hero
 import com.jet_project.game.gameObjects.GameObject
-import sun.rmi.runtime.Log
+import com.jet_project.game.gameObjects.Wall
 import java.util.*
 
 /**
@@ -38,12 +38,16 @@ class GameWorld(lvl : GameLevel) {
 
     private fun generateWorld(){
         generateCreatures()
-        //generateObjects()
-
+        generateObjects()
 
     }
     private fun generateObjects(){
-        TODO("Not implemented")
+        for(line in level.getGameObjectsData()) {
+            val name = line.substring(0, line.indexOf("{"))
+            val posX = line.substring(line.indexOf("{") + 1, line.indexOf(",")).toFloat()
+            val posY = line.substring(line.indexOf(",") + 1, line.indexOf("}")).toFloat()
+            gameObjects.add(Wall(name,this , posX,posY))
+        }
     }
 
     internal fun render(batch : SpriteBatch){

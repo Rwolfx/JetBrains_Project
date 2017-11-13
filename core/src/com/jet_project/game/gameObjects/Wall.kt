@@ -12,6 +12,7 @@ class Wall(name: String, currentWorld: GameWorld, x: Float, y: Float) : GameObje
     override fun init() {
         img = Texture("badlogic.jpg")
         sprite = Sprite(img)
+        sprite.setPosition(positionX,positionY)
         super.init()
     }
 

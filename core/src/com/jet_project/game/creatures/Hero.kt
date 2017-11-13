@@ -11,6 +11,7 @@ class Hero( name: String, currentWorld: GameWorld, x: Float, y: Float) : Creatur
     override fun init() {
         img = Texture("badlogic.jpg")
         sprite = Sprite(img)
+        sprite.setPosition(positionX,positionY)
         super.init()
     }
 }

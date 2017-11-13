@@ -19,7 +19,7 @@ class GameLevel(levelNum : String) {
         val numberOfCreatures = lineList.get(0).toInt()
         for(i in (1 until numberOfCreatures+1)) creaturesData.add(lineList[i])
         val numberOfGameObjects = lineList.get(numberOfCreatures+1).toInt()
-        for(i in (numberOfGameObjects until lineList.size)) gameObjectsData.add(lineList[i])
+        for(i in (numberOfCreatures+2 until lineList.size)) gameObjectsData.add(lineList[i])
 
 
     }

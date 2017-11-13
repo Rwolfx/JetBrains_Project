@@ -1,5 +1,6 @@
 package com.jet_project.game.gameObjects
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
@@ -18,17 +19,17 @@ abstract class GameObject(name : String, currentWorld : GameWorld, x : Float, y 
     private lateinit var fixture : Fixture
     protected lateinit var img : Texture
     protected lateinit var sprite : Sprite
-    private var positionX = x
-    private var positionY = y
+    protected var positionX = x
+    protected var positionY = y
     private var world = currentWorld
 
     open fun init() {
         bodyDef = BodyDef()
         bodyDef.type = BodyDef.BodyType.DynamicBody
-        bodyDef.position.set(positionX, positionY)
+        bodyDef.position.set(sprite.x, sprite.y)
         body = world.getWorld().createBody(bodyDef)
         shape = PolygonShape()
-        shape.setAsBox(img.width.toFloat(),img.height.toFloat())
+        shape.setAsBox(sprite.width/2,sprite.height/2)
         fixtureDef = FixtureDef()
         fixtureDef.shape = shape
         fixtureDef.density = Settings.DEFAULT_DENSITY
