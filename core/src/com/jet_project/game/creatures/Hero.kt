@@ -9,7 +9,7 @@ import com.jet_project.game.game.GameWorld
  */
 class Hero( name: String, currentWorld: GameWorld, x: Float, y: Float) : Creature(name, currentWorld, x, y) {
     override fun init() {
-        img = Texture("badlogic.jpg")
+        img = Texture("creatures/character.png")
         sprite = Sprite(img)
         sprite.setPosition(positionX,positionY)
         super.init()
