@@ -7,8 +7,12 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.physics.box2d.Box2D
+import com.jet_project.game.states.MenuState
+import com.jet_project.game.states.PlayState
+import com.jet_project.game.states.StateManager
 
 class Game : ApplicationAdapter() {
+    private var sm : StateManager = StateManager()
     private lateinit var batch: SpriteBatch
     private lateinit var world : GameWorld
     private lateinit var test : Texture
@@ -16,24 +20,13 @@ class Game : ApplicationAdapter() {
     private lateinit var level : GameLevel
 
     override fun create() {
-        Box2D.init()
+        sm.push(MenuState(sm))
         batch = SpriteBatch()
-        test = Texture("badlogic.jpg")
-        fh = Gdx.files.local("Levels/Level1.txt")
-        level = GameLevel("1")
-        level.init()
-        world = GameWorld(level)
-        world.init()
     }
 
     override fun render() {
-        Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-        batch.begin()
-        world.render(batch)
-        batch.end()
-        world.step(Gdx.graphics.deltaTime)
-        world.update()
+        sm.render(batch)
+        sm.update(Gdx.graphics.deltaTime)
     }
 
     override fun dispose() {
