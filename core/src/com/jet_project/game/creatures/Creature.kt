@@ -41,7 +41,7 @@ open abstract class Creature(name : String, currentWorld : GameWorld, x : Float,
         batch.draw(sprite,positionX,positionY)
     }
 
-    fun update(){
+    fun update(delta : Float){
         positionX = body.position.x
         positionY = body.position.y
     }

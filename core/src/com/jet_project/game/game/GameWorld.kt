@@ -54,9 +54,9 @@ class GameWorld(lvl : GameLevel) {
         if(creatures.isNotEmpty()) creatures.forEach { creature -> creature.render(batch) }
         if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.render(batch) }
     }
-    internal fun update(){
-        if(creatures.isNotEmpty()) creatures.forEach {  creature -> creature.update() }
-        if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.update() }
+    internal fun update(delta : Float){
+        if(creatures.isNotEmpty()) creatures.forEach {  creature -> creature.update(delta) }
+        if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.update(delta) }
     }
 
     internal fun step(timeStep : Float){
