@@ -27,4 +27,5 @@ class StateManager(){
     fun render(sb : SpriteBatch){
         states.peek().render(sb)
     }
+
 }

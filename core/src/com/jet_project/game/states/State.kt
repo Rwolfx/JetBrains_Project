@@ -12,6 +12,7 @@ import com.jet_project.game.game.GameWorld
  * Created by rwolf on 11/25/2017.
  */
 abstract class State(sm : StateManager) {
+    protected var sm = sm
 
     open fun create(){
 
@@ -28,4 +29,10 @@ abstract class State(sm : StateManager) {
     open fun update(delta : Float){
 
     }
+
+    open fun handleInput(){
+
+    }
+
+
 }
