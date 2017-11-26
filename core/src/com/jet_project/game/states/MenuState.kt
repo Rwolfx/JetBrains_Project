@@ -26,9 +26,9 @@ class MenuState(sm : StateManager) : State(sm){
 
     override fun create(){
         menuBackground = Texture("backgrounds/menu_background.jpg")
-        playButton = Texture("buttons/menu_play_button.jpg")
-        settingsButton = Texture("buttons/menu_settings_button.jpg")
-        helpButton = Texture("buttons/menu_help_button.jpg")
+        playButton = Texture("buttons/menu_play_button.gif")
+        settingsButton = Texture("buttons/menu_settings_button.gif")
+        helpButton = Texture("buttons/menu_help_button.gif")
         buttonWidth = ((Gdx.graphics.width-playButton.width)/2).toFloat()
         playButtonY = (Gdx.graphics.height-playButton.height).toFloat()*3/4
         settingsButtonY = (Gdx.graphics.height-playButton.height).toFloat()*2/4
