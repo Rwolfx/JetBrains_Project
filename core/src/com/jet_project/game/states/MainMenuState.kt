@@ -9,7 +9,7 @@ import com.badlogic.gdx.math.Rectangle
 /**
  * Created by rwolf on 11/25/2017.
  */
-class MenuState(sm : StateManager) : State(sm){
+class MainMenuState(sm : StateManager) : State(sm){
 
     private lateinit var playButton : Texture
     private lateinit var settingsButton: Texture
@@ -51,7 +51,7 @@ class MenuState(sm : StateManager) : State(sm){
 
     override fun handleInput() {
         val inputX = Gdx.input.x.toFloat()
-        val inputY = Gdx.input.y.toFloat()
+        val inputY = Gdx.graphics.height - Gdx.input.y.toFloat()
         Gdx.app.debug("Input", inputX.toString() + " " + inputY.toString())
         if(playButtonBounds.contains(inputX,inputY)) sm.push(PlayState(sm))
         if(settingsButtonBounds.contains(inputX,inputY)) sm.push(SettingsState(sm))
