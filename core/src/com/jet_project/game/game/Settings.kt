@@ -9,5 +9,6 @@ abstract class Settings {
         val DEFAULT_DENSITY = 1f
         val velocityIterations = 6
         val positionIterations = 2
+        val cameraViewPort = 30f
     }
 }
