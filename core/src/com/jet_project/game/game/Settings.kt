@@ -10,5 +10,7 @@ abstract class Settings {
         val velocityIterations = 6
         val positionIterations = 2
         val cameraViewPort = 30f
+        val maximumVelocityX = 200f;
+        val maximumVelocityY = 200f;
     }
 }

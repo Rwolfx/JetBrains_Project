@@ -22,6 +22,7 @@ class GameWorld(lvl : GameLevel) {
     private var creatures = ArrayList<Creature>()
     private var gameObjects = ArrayList<GameObject>()
     private val level = lvl
+    private lateinit var hero : Hero;
 
 
     internal fun init(){
@@ -30,6 +31,7 @@ class GameWorld(lvl : GameLevel) {
         stage.addActor(gameTouchpad.touchpad)
         Gdx.input.inputProcessor = stage
         generateWorld()
+        hero = creatures.getHero()!!
         if(creatures.isNotEmpty()) creatures.forEach { creature -> creature.init() }
         if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.init() }
     }
@@ -65,6 +67,8 @@ class GameWorld(lvl : GameLevel) {
     internal fun update(delta : Float){
         if(creatures.isNotEmpty()) creatures.forEach {  creature -> creature.update(delta) }
         if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.update(delta) }
+        hero.getBody().setLinearVelocity(gameTouchpad.touchpad.knobPercentX * Settings.maximumVelocityX,
+                gameTouchpad.touchpad.knobPercentY * Settings.maximumVelocityY)
     }
 
     internal fun step(timeStep : Float){
@@ -78,6 +82,12 @@ class GameWorld(lvl : GameLevel) {
 
 
 
-
+    fun ArrayList<Creature>.getHero() : Hero? {
+        var hero : Creature;
+        hero = creatures.filter { creature -> creature is Hero }.get(0)
+        if(hero is Hero)
+            return hero
+        else return null;
+    }
 
 }

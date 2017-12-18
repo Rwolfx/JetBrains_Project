@@ -12,16 +12,16 @@ import com.jet_project.game.game.Settings
  * Created by rwolf on 11/8/2017.
  */
 abstract class GameObject(name : String, currentWorld : GameWorld, x : Float, y : Float) {
-    private lateinit var bodyDef : BodyDef
-    private lateinit var body : Body
-    private lateinit var shape : PolygonShape
-    private lateinit var fixtureDef : FixtureDef
-    private lateinit var fixture : Fixture
+    protected lateinit var bodyDef : BodyDef
+    protected lateinit var body : Body
+    protected lateinit var shape : PolygonShape
+    protected lateinit var fixtureDef : FixtureDef
+    protected lateinit var fixture : Fixture
     protected lateinit var img : Texture
     protected lateinit var sprite : Sprite
     protected var positionX = x
     protected var positionY = y
-    private var world = currentWorld
+    protected var world = currentWorld
 
     open fun init() {
         bodyDef = BodyDef()
