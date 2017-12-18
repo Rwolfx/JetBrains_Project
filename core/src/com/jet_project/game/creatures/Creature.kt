@@ -46,4 +46,6 @@ open abstract class Creature(name : String, currentWorld : GameWorld, x : Float,
         positionY = body.position.y
     }
 
+    fun getBody() : Body = body;
+
 }

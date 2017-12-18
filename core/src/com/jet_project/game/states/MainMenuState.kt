@@ -39,7 +39,6 @@ class MainMenuState(sm : StateManager) : State(sm){
     }
 
     override fun render(batch : SpriteBatch){
-        Gdx.gl.glClearColor(1f, 0f, 0f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
         batch.begin()
         batch.draw(menuBackground,0f,0f,Gdx.graphics.width.toFloat(),Gdx.graphics.height.toFloat())
