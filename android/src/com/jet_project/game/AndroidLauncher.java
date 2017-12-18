@@ -8,6 +8,11 @@ import com.jet_project.game.game.Game;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
+	public void useImmersiveMode(boolean use) {
+		super.useImmersiveMode(true);
+	}
+
+	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();

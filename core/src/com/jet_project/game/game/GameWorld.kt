@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.World
+import com.badlogic.gdx.scenes.scene2d.Stage
+import com.jet_project.game.controls.GameTouchpad
 import com.jet_project.game.creatures.Creature
 import com.jet_project.game.creatures.Hero
 import com.jet_project.game.gameObjects.GameObject
@@ -15,6 +17,8 @@ import java.util.*
  */
 class GameWorld(lvl : GameLevel) {
     private lateinit var world : World
+    private val stage = Stage()
+    private val gameTouchpad = GameTouchpad()
     private var creatures = ArrayList<Creature>()
     private var gameObjects = ArrayList<GameObject>()
     private val level = lvl
@@ -22,6 +26,9 @@ class GameWorld(lvl : GameLevel) {
 
     internal fun init(){
         world = World(Vector2(0f,Settings.GRAVITY), true)
+        gameTouchpad.init()
+        stage.addActor(gameTouchpad.touchpad)
+        Gdx.input.inputProcessor = stage
         generateWorld()
         if(creatures.isNotEmpty()) creatures.forEach { creature -> creature.init() }
         if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.init() }
@@ -53,6 +60,7 @@ class GameWorld(lvl : GameLevel) {
     internal fun render(batch : SpriteBatch){
         if(creatures.isNotEmpty()) creatures.forEach { creature -> creature.render(batch) }
         if(gameObjects.isNotEmpty()) gameObjects.forEach { gameObject -> gameObject.render(batch) }
+        stage.draw()
     }
     internal fun update(delta : Float){
         if(creatures.isNotEmpty()) creatures.forEach {  creature -> creature.update(delta) }
